@@ -52,12 +52,28 @@ function start() {
     // function data here
   }
   // View All Roles
+  function viewAllRoles() {
+
+  };
   // View All Departments
+  function viewAllDepartments() {
 
+  };
   // Create New Employee
-  // Create New Role 
-  // Create New Department
+  function createNewEmployee() {
 
+  };
+  // Create New Role 
+  function createNewRole(){
+
+  };
+  // Create New Department
+  function createNewDepartment(){
+
+  };
   // Update Employee Role
+  function updateEmployeeRole(){
+
+  };
 
 };
