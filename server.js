@@ -231,8 +231,37 @@ function start() {
 
   // Update Employee Role
   function updateEmployeeRole() {
-    console.log('updateEmployeeRole');
-    start();
-  };
-
-};
+    //show all employees, UX upgrade
+    inquirer.prompt([
+      {
+        name: "employeeID",
+        type: "input",
+        message: "Please enter the ID of the employee you would like to update"
+      },
+      {
+        name: "roleID",
+        type: "input",
+        message: "Please enter the Role ID that you would like the employee to have"
+      }
+    ]).then(function (answer) {
+      employeeID = answer.employeeID;
+      console.log("Updating employee role...");
+      connection.query(
+        `UPDATE employee SET ? WHERE ?`,
+        [
+          {
+            role_id: answer.roleID
+          },
+          {
+            id: employeeID
+          }
+        ],
+        function (error, response) {
+          if (error) throw error;
+          console.log("Successfully updated employee role");
+          start();
+        }
+      )
+    })
+  }
+}
