@@ -206,8 +206,27 @@ function start() {
 
   // Create New Department
   function createNewDepartment() {
-    console.log('createNewDepartment');
-    start();
+    inquirer.prompt([
+      {
+        name: "name",
+        type: "input",
+        message: "Please enter department name"
+      }
+    ])
+      .then(function (answer) {
+        console.log("Creating new department...");
+        connection.query(
+          `INSERT INTO department SET ?`,
+          {
+            name: answer.name
+          },
+          function (error, response) {
+            if (error) throw error;
+            console.log("Successfully created new department");
+            start();
+          }
+        )
+      })
   };
 
   // Update Employee Role
